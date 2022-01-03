@@ -1,19 +1,6 @@
-agent any
-
-stages {
-	stage('Build'){
-		steps{
-			echo "Build"
-			echo "path is $PATH"
-		}
-	}
-	stage('Test'){
-		steps{
-			echo "Test"
-			echo " build tag is $env.BUILD_TAG"
-			echo "job is $env.JOB_NAME"
-		}
-	}
-
+node {
 	
-}
+	echo "Build"
+	echo "Test"
+	echo "Test"
+		}
