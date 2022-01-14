@@ -4,11 +4,11 @@
 	 
 	 environment{
 		 dockerHome = tool 'myDocker'
-		 mavenHome = tool 'myMaven'
-		 PATH = "$dockerHome/bin:$mavenHome/bin:$PATH"
+		// mavenHome = tool 'myMaven'
+		 PATH = "$mavenHome/bin:$PATH"
 	 }
 stages{
-	stage('Build'){
+	stage('details'){
 		steps {
 			echo "hi"
 			echo "node version is"
@@ -18,11 +18,27 @@ stages{
 			echo "BUILD_TAG"
 			echo "$env.BUILD_TAG"
 			sh 'mvn --version'
-			sh 'docker version'
+			//sh 'docker version'
 			echo "path is"
 			echo "$PATH"
 			echo "this is declarative pipiline"
 			}
+	}
+	stage('complie'){
+		steps{
+			sh "mvn clean compile"
+		}
+	}
+	
+	stage('test'){
+		steps{
+			sh "mvn test"
+		}
+	}
+	stage('Integration Test'){
+		steps{
+			sh "mvn failsafe:integration-test failsafe:verify"
+		}
 	}
 }
 }
