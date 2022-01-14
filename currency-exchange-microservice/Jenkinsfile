@@ -1,6 +1,12 @@
  pipeline{
  agent any
 	// agent {docker { image 'node:13.8'}}
+	 
+	 environment{
+		 dockerHome = tool 'myDocker'
+		 mavenHome = tool 'myMaven'
+		 PATH = "$dockerHome/bin:$mavenHome/bin:$PATH"
+	 }
 stages{
 	stage('Build'){
 		steps {
@@ -11,6 +17,10 @@ stages{
 			echo "$env.BUILD_NUMBER"
 			echo "BUILD_TAG"
 			echo "$env.BUILD_TAG"
+			sh 'mvn --version'
+			sh 'docker version'
+			echo "path is"
+			echo "$PATH"
 			echo "this is declarative pipiline"
 			}
 	}
