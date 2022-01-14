@@ -9,6 +9,8 @@ stages{
 			//sh 'node --version'
 			echo "BUILD_NUMBER"
 			echo "$env.BUILD_NUMBER"
+			echo "BUILD_TAG"
+			echo "$env.BUILD_TAG"
 			echo "this is declarative pipiline"
 			}
 	}
