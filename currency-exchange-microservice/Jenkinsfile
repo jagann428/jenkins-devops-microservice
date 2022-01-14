@@ -1,11 +1,11 @@
-pipeline{
+ pipeline{
 agent any
 
 stages{
 	stage('Build'){
 		steps {
-			sh 'mvn --version'
-			sh 'docker version'
+			echo "hi"
+			echo "declarative pipiline"
 			}
 	}
 }
